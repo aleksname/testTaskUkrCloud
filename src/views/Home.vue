@@ -1,7 +1,7 @@
 <template>
   <div>
     <MainContainer>
-      <h1>Вітаємо на головній сторінці!</h1>
+      <div className="home">Вітаємо на головній сторінці!</div>
     </MainContainer>
   </div>
 </template>
@@ -13,3 +13,10 @@ export default {
   components: {MainContainer}    
 }
 </script>
+
+<style>
+.home{
+  font-size: 30px;
+  font-weight: 600;
+}
+</style>

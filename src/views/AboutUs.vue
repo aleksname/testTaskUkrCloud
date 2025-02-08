@@ -1,6 +1,6 @@
 <template>
     <MainContainer>
-        <h1>детально про товар</h1>
+        <h1>About us</h1>
     </MainContainer>
 </template>
 
