@@ -20,15 +20,17 @@
           <div className="mediaCardContainer">
             <div className="mediaCardEl">
                 <ul className="mediaCardUl">
-                    <li v-for="movie in movies" :key="movie.id" className="mediaCardElLi">
-                      <!-- <img src={{ movie.poster_path }} alt=""> -->
-                       <!-- <div class="mediaCardContainer"> -->
-                            <div class="mediaCardImageContainer">
-                                <img :src="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="Movie poster" className="mediaCardImg">
-                                <div class="mediaCardImagePlay">&#9654;</div>
-                            </div>
-                           <div className="mediaCardElTitle">{{ movie.title }}</div>
-                       <!-- </div> -->
+                     <li v-for="movie in movies" :key="movie.id" className="mediaCardElLi">
+                        <router-link :to="'/film/' + movie.id"> 
+                        <div class="mediaCardImageContainer">
+                            <img :src="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
+                                alt="Movie poster"
+                                class="mediaCardImg"
+                            />
+                            <div class="mediaCardImagePlay">&#9654;</div>
+                        </div>
+                        <div class="mediaCardElTitle">{{ movie.title }}</div>
+                        </router-link>
                     </li>
                 </ul>
             </div>
@@ -187,12 +189,13 @@ export default {
 
 }
 
-.mediaCardElTitle {
+.mediaCardElTitle  {
     font-size: 18px;
     margin-top: 5px;
     color: rgb(25, 51, 100);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: 600;
+    text-decoration: none;
 }
 
 

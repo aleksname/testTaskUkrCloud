@@ -11,4 +11,6 @@ body{
     margin: 0;
     padding: 0;
     background-color: none;
+    text-decoration: none;
+    list-style: none;
 }

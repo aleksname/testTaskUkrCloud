@@ -1,10 +1,9 @@
 <template>
   <div>
     <MainContainer>
-      <!-- <div className="home">Вітаємо на головній сторінці!</div> -->
-       <a href="film">
+       <!-- <a href="film"> -->
          <MediaCard/>
-       </a>
+       <!-- </a> -->
     </MainContainer>
   </div>
 </template>
