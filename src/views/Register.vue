@@ -1,25 +1,27 @@
 
 <template>
-  <div class="wrapper">
-    <form action="">
-      <div class="" className="formContainer">
-        <div class="formTitle">Створи акаунт</div>
-        <input type="text" v-model="userName" name="" id="" placeholder="Iм'я користувача" className="formInput">
-        <input type="email" v-model="userEmail" name="" id="" placeholder="Електронна пошта" className="formInput">
-        <input type="password" v-model="userPassword" name="" id="" placeholder="Пароль" className="formInput">
-      </div>
-      <div class="formButtonContainer">
-        <button type="button" className="formButton" @click="sendUserData()">submit</button>
-      </div>
-    </form>
-  </div>
+  <!-- <MainContainer> -->
+    <div class="registerContainer">
+      <form action="">
+        <div class="" className="formContainer">
+          <div class="formTitle">Створи акаунт</div>
+          <input type="text" v-model="userName" name="" id="" placeholder="Iм'я користувача" className="formInput">
+          <input type="email" v-model="userEmail" name="" id="" placeholder="Електронна пошта" className="formInput">
+          <input type="password" v-model="userPassword" name="" id="" placeholder="Пароль" className="formInput">
+        </div>
+        <div class="formButtonContainer">
+          <button type="button" className="formButton" @click="sendUserData()">submit</button>
+        </div>
+      </form>
+    </div>
+  <!-- </MainContainer> -->
 </template>
 
 <script>
-// import MainContainer from '../components/MainContainer.vue'
+import MainContainer from '../components/MainContainer.vue'
 
 export default {
-  // components: {MainContainer},
+  components: {MainContainer},
 
   data() {
     return {
@@ -47,7 +49,7 @@ export default {
 </script>
 
 <style>
-  .wrapper{
+  .registerContainer{
     display: flex;
     justify-content: center;
     align-items: center;

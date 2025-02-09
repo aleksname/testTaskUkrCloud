@@ -1,7 +1,6 @@
 <template>
     <MainContainer>
-        <div className="home">all list</div>
-        <a href="/home">go home</a>
+        <h1>About us</h1>
     </MainContainer>
 </template>
 
