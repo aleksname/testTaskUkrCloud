@@ -3,10 +3,10 @@
         <!-- <img :src="'https://image.tmdb.org/t/p/w500' + movie.backdrop_path" alt="mediaCardBG" className="mediaCardBG"> -->
         <div className="wrapperComponent _detailViev">
             <FilmDetailBackRouting/>
-            <div v-if="movie">
+            <div v-if="movie" className="detailMediaCardContainer"   >
                 <div class="detailMediaCard">
                     <img :src="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="Movie poster" className="mediaCardDetail"   />
-                    <div class="">
+                    <div class="detailMediaOvervievContainer">
                         <h1 className="detailMediaCardTitle">{{ movie.title }}</h1>
                         <h1 className="detailMediaCardSubTitle">{{ 'Популярність ' + `${movie.popularity} `}}</h1>
                         <h1 className="detailMediaCardSubTitle">{{ 'Рік  ' + `${movie.release_date} `}}</h1>
@@ -14,7 +14,9 @@
                         <h1 className="detailMediaCardSubTitle">{{ 'Оцінок  ' + `${movie.vote_count} `}}</h1>
                     </div>
                 </div>
-                <button type="button" className="startOverviev" @click="tempAlert()" >Почати перегляд</button>
+                <div class="startOvervievContainer">
+                    <button type="button" className="startOverviev" @click="tempAlert()" >Почати перегляд</button>
+                </div>
                 <p className="detailMediaCardOverview">{{ movie.overview }}</p>
             </div>
             <div v-else>
@@ -73,11 +75,27 @@ export default {
     display: flex;
     margin-bottom: 15px;
 }
+
+@media (max-width: 600px){
+    .detailMediaCard{
+        display: block;
+        text-align: center;
+    }
+    .startOvervievContainer{
+        display: flex;
+        justify-content: center;
+    }
+   .detailMediaOvervievContainer{
+        margin: 0px;
+   }
+}
+.detailMediaOvervievContainer{
+    margin-left: 20px;
+}
 .mediaCardDetail{
     width: 200px;
     height: auto;
     border-radius: 10px;
-    margin-right: 30px;
 }
 .detailMediaCardTitle{
     font-size: 25px;
