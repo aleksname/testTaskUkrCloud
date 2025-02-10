@@ -7,7 +7,7 @@
           <div class="" className="">
             <div class="formTitle">Реєстріція акаунту</div>
             <input type="text" v-model="userName" name="" id="" placeholder="Iм'я користувача" className="formInput">
-            <input type="email" v-model="userEmail" name="" id="" placeholder="Електронна пошта" className="formInput">
+            <input type="email" v-model="userEmail" name="" id="" placeholder="Електронна пошта" className="formInput"> <!--! чомусь саме тут проскальтує тип email -->
             <input type="password" v-model="userPassword" name="" id="" placeholder="Пароль" className="formInput">
           </div>
           <div class="formButtonContainer">
@@ -39,15 +39,21 @@ export default {
         return; 
       }
 
+      localStorage.setItem('userData', JSON.stringify({
+        userName: this.userName,
+        userEmail: this.userEmail,
+        userPassword: this.userPassword,
+        verified: false 
+      }));
+
+      console.log('Реєстрація успішна. Перенаправлення на login...');
+
       setTimeout(() => {
-        console.log('Реєстріція успішна');
-        this.$router.push('/home')
-      },3000) // провіряю 'переадресацію' 
-      }
+        this.$router.push('/login') 
+      }, 1500);
     }
   }
-
-  
+}
 </script>
 
 <style>
