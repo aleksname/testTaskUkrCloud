@@ -1,9 +1,7 @@
 <template>
   <div>
     <MainContainer>
-       <!-- <a href="film"> -->
          <MediaCard/>
-       <!-- </a> -->
     </MainContainer>
   </div>
 </template>
