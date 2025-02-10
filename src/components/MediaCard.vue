@@ -191,7 +191,11 @@ export default {
     text-align: center;
     width: 180px; 
 }
-
+@media (max-width: 430px){
+    .mediaCardElLi{
+        width: 220px; 
+    }
+}
 .mediaCardImg {
     width: 100%; 
     border-radius: 10px;

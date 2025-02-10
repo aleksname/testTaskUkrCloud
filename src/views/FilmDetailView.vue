@@ -9,7 +9,7 @@
                     <div class="detailMediaOvervievContainer">
                         <h1 className="detailMediaCardTitle">{{ movie.title }}</h1>
                         <h1 className="detailMediaCardSubTitle">{{ 'Популярність ' + `${movie.popularity} `}}</h1>
-                        <h1 className="detailMediaCardSubTitle">{{ 'Рік  ' + `${movie.release_date} `}}</h1>
+                        <h1 className="detailMediaCardSubTitle">{{ 'Дата виходу  ' + `${movie.release_date} `}}</h1>
                         <h1 className="detailMediaCardSubTitle">{{ 'Оцінка глядачів  ' + `${movie.vote_average} `}}</h1>
                         <h1 className="detailMediaCardSubTitle">{{ 'Оцінок  ' + `${movie.vote_count} `}}</h1>
                     </div>
@@ -88,6 +88,9 @@ export default {
    .detailMediaOvervievContainer{
         margin: 0px;
    }
+   ._detailViev{
+    height: auto;
+}
 }
 .detailMediaOvervievContainer{
     margin-left: 20px;
@@ -138,6 +141,5 @@ export default {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: 400;
     line-height: 30px;
-
 }
 </style>
