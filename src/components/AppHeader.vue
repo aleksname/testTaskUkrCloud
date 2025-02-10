@@ -43,7 +43,7 @@
     }
     .headerLink{
         text-decoration: none;
-        color: black;
+        color: white;
         padding: 0 4px;
         cursor: pointer;
     }
@@ -53,6 +53,7 @@
     ._Logo{
         font-size: 22px;
         font-weight: 700;
+        color: white;
     }
     ._Logo:hover{
         border: none;
