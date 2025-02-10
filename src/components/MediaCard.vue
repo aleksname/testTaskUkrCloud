@@ -124,6 +124,14 @@ export default {
     color: rgb(25, 51, 100);
     cursor: pointer;
 }
+.filterContainerLinkTo:last-child{
+    margin-right: 0;
+}
+@media (max-width: 600px){
+   .filterContainerLinkTo{
+    margin-right: 15px;
+   } 
+}
 .filterContainerLinkTo:hover{
     color: rgb(202, 151, 24);
 }
@@ -162,6 +170,13 @@ export default {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: 700;
 }
+
+@media (max-width: 800px){
+    .mediaCardTitle{
+        font-size: 24px;
+    }
+}
+
 .mediaCardUl {
     display: flex;
     flex-wrap: wrap;
