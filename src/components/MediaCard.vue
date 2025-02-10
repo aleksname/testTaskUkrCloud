@@ -3,7 +3,7 @@
         <div class="filterContainer">
             <div class="filterInputContainer">
                 <div class="headerLogo">
-                    <a href="/home" className="headerLink _Logo">Logo</a>
+                    <a href="/home" className="headerLinkFilter _Logo">Logo</a>
                 </div>
                 <input type="text" placeholder="Пошук..." className="filterInput">
                 <button type="button" className="filterButton">Вхід</button>
@@ -88,6 +88,9 @@ export default {
     border: 1px solid rgba(128, 128, 128, 0.147);
     outline: none;
     cursor: pointer;
+}
+.headerLinkFilter{
+    color: black;
 }
 .filterButton{
     padding: 10px 25px;

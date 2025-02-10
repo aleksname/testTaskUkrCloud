@@ -1,15 +1,21 @@
 <template>
     <MainContainer>
-        <div className="wrapperComponent">
+        <!-- <img :src="'https://image.tmdb.org/t/p/w500' + movie.backdrop_path" alt="mediaCardBG" className="mediaCardBG"> -->
+        <div className="wrapperComponent _detailViev">
             <FilmDetailBackRouting/>
             <div v-if="movie">
                 <div class="detailMediaCard">
                     <img :src="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="Movie poster" className="mediaCardDetail"   />
                     <div class="">
-                        <h1>{{ movie.title }}</h1>
-                        <p>{{ movie.overview }}</p>
+                        <h1 className="detailMediaCardTitle">{{ movie.title }}</h1>
+                        <h1 className="detailMediaCardSubTitle">{{ 'Популярність ' + `${movie.popularity} `}}</h1>
+                        <h1 className="detailMediaCardSubTitle">{{ 'Рік  ' + `${movie.release_date} `}}</h1>
+                        <h1 className="detailMediaCardSubTitle">{{ 'Оцінка глядачів  ' + `${movie.vote_average} `}}</h1>
+                        <h1 className="detailMediaCardSubTitle">{{ 'Оцінок  ' + `${movie.vote_count} `}}</h1>
                     </div>
                 </div>
+                <button type="button" className="startOverviev" @click="tempAlert()" >Почати перегляд</button>
+                <p className="detailMediaCardOverview">{{ movie.overview }}</p>
             </div>
             <div v-else>
               <p>Завантаження...</p>
@@ -49,17 +55,71 @@ export default {
         })
         .catch((err) => console.error(err));
     },
+
+    methods: {
+        tempAlert() {
+            alert('^-^')
+        }
+    }
     };
 </script>
 
 <style>
+._detailViev{
+    height: 100vh;
+}
+
 .detailMediaCard{
     display: flex;
+    margin-bottom: 15px;
 }
 .mediaCardDetail{
-    width: 150px;
+    width: 200px;
     height: auto;
     border-radius: 10px;
     margin-right: 30px;
+}
+.detailMediaCardTitle{
+    font-size: 25px;
+    color: rgb(25, 51, 100);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+.detailMediaCardSubTitle{
+    font-size: 16px;
+    color: rgb(25, 51, 100);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+.startOverviev{
+    background-color: rgb(16, 16, 222);
+    padding: 10px 27px;
+    border-radius: 8px;
+    border: none;
+    color: white;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.startOverviev:hover{
+    transform: scale(1.1);
+    background-color: rgb(14, 14, 201);
+}
+.startOverviev:active{
+    transition: 0.2s;
+    transform: scale(1);
+    background-color: rgb(27, 27, 158);
+}
+.detailMediaCardOverview{
+    font-size: 18px;
+    color: rgb(25, 51, 100);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 400;
+    line-height: 30px;
+
 }
 </style>

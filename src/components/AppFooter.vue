@@ -5,9 +5,9 @@
             </div>
            
              <div class="social-links">
-                <a href="https://t.me/yourtelegram" target="_blank">Telegram</a>
-                <a href="https://twitter.com/yourtwitter" target="_blank">Twitter</a>
-                <a href="https://github.com/yourgithub" target="_blank">GitHub</a>
+                <a href="https://t.me/@alexname04" target="_blank">Telegram</a>
+                <a href="https://github.com/aleksname" target="_blank">GitHub</a>
+                <a href="mailto:awawpep@gmail.com">Email</a>
             </div>
         </div>
 </template>
