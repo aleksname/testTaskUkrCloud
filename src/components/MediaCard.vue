@@ -1,69 +1,77 @@
 <template>
-    <div class="wrapperComponent">
-        <div class="filterContainer">
-            <div class="filterInputContainer">
-                <div class="headerLogo">
-                    <a href="/home" className="headerLinkFilter _Logo">Logo</a>
-                </div>
-                <input type="text" placeholder="Пошук..." className="filterInput">
-                <button type="button" className="filterButton">Вхід</button>
-            </div>
-            <div class="filterContainerButton">
-                <button type="button" className="filterContainerLinkTo">Серіали</button>
-                <button type="button" className="filterContainerLinkTo">Мультсеріали</button>
-                <button type="button" className="filterContainerLinkTo">Фільми</button>
-                <button type="button" className="filterContainerLinkTo">Мультфільми</button>
-                <button type="button" className="filterContainerLinkTo">Добірки</button>
-            </div>
+  <div class="wrapperComponent">
+    <div class="filterContainer">
+      <div class="filterInputContainer">
+        <div class="headerLogo">
+          <router-link to="/home" class="headerLinkFilter _Logo">Logo</router-link>
         </div>
-        <strong className="mediaCardTitle">Дивитися фільми онлайн українською в HD якості</strong>
-          <div className="mediaCardContainer">
-            <div className="mediaCardEl">
-                <ul className="mediaCardUl">
-                     <li v-for="movie in movies" :key="movie.id" className="mediaCardElLi">
-                        <router-link :to="'/film/' + movie.id"> 
-                        <div class="mediaCardImageContainer">
-                            <img :src="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
-                                alt="Movie poster"
-                                class="mediaCardImg"
-                            />
-                            <div class="mediaCardImagePlay">&#9654;</div>
-                        </div>
-                        <div class="mediaCardElTitle">{{ movie.title }}</div>
-                        </router-link>
-                    </li>
-                </ul>
-            </div>
-          </div>
+        <input 
+          type="text" 
+          placeholder="Пошук..." 
+          class="filterInput"
+          v-model="query"    
+        >
+        <button type="button" class="filterButton">Вхід</button>
+      </div>
+      <div class="filterContainerButton">
+        <button type="button" class="filterContainerLinkTo">Серіали</button>
+        <button type="button" class="filterContainerLinkTo">Мультсеріали</button>
+        <button type="button" class="filterContainerLinkTo">Фільми</button>
+        <button type="button" class="filterContainerLinkTo">Мультфільми</button>
+        <button type="button" class="filterContainerLinkTo">Добірки</button>
+      </div>
     </div>
+    <strong class="mediaCardTitle">Дивитися фільми онлайн українською в HD якості</strong>
+    <div class="mediaCardContainer">
+      <div class="mediaCardEl">
+        <ul class="mediaCardUl">
+          <li v-for="movie in filteredMovies" :key="movie.id" class="mediaCardElLi">
+            <router-link :to="'/film/' + movie.id"> 
+              <div class="mediaCardImageContainer">
+                <img :src="'https://image.tmdb.org/t/p/w500' + movie.poster_path"
+                     alt="Movie poster"
+                     class="mediaCardImg"
+                />
+                <div class="mediaCardImagePlay">&#9654;</div>
+              </div>
+              <div class="mediaCardElTitle">{{ movie.title }}</div>
+            </router-link>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      movies: [] 
-    };
-  },
-  mounted() {
-    const options = {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNDUzMThlMjY3NWE1YmRhMWE3OTEyM2E0MWQ2ZGM0YiIsIm5iZiI6MTczOTA4Njk1MS45ODIsInN1YiI6IjY3YTg1YzY3YjkzNjBjM2UzM2UwODYxNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lcHcH8zZoo2w7QBLGSSrD57eDcHrdtxhWyQZJ-_ZTSM'
-      }
-    };
+<script setup>
+import { ref, computed, onMounted } from 'vue';
 
-    fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options)
-      .then(res => res.json())
-      .then(data => {
-        this.movies = data.results; 
-        console.log(data);
-        
-      })
-      .catch(err => console.error(err));
-  }
-};
+const query = ref('');
+const movies = ref([]);
+
+const filteredMovies = computed(() => {
+  return movies.value.filter(movie =>
+    movie.title.toLowerCase().includes(query.value.toLowerCase())
+  );
+});
+
+onMounted(() => {
+  const options = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNDUzMThlMjY3NWE1YmRhMWE3OTEyM2E0MWQ2ZGM0YiIsIm5iZiI6MTczOTA4Njk1MS45ODIsInN1YiI6IjY3YTg1YzY3YjkzNjBjM2UzM2UwODYxNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lcHcH8zZoo2w7QBLGSSrD57eDcHrdtxhWyQZJ-_ZTSM'
+    }
+  };
+
+  fetch('https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', options)
+    .then(res => res.json())
+    .then(data => {
+      movies.value = data.results;
+      console.log(data);
+    })
+    .catch(err => console.error(err));
+});
 </script>
 <style>
 .wrapperComponent{
