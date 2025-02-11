@@ -8,7 +8,7 @@
                     placeholder="Пошук елментів"
                     v-model="query"
                 >
-                <div class="">{{  query}}</div>
+                <!-- <div class="">{{  query}}</div> -->
                 <ul>
                     <li v-for="product in queryElement" :key="product">
                         {{ product }}
@@ -30,8 +30,9 @@ export default {
     setup() {
         const query = ref('')
         const queryElement = computed(() => {
-            return products.value.filter((product) => product.indexOf(query.value) !== -1)
-        })
+            return products.value.filter((product) =>
+                product.toLocaleLowerCase().includes(query.value.toLocaleLowerCase())
+        )})
         const products = ref([
             'Apple',
             'Banana',
