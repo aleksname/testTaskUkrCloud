@@ -71,7 +71,7 @@ export default {
 
 <style>
 ._detailViev{
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .detailMediaCard{
