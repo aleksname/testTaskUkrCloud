@@ -23,7 +23,7 @@
     </div>
     <strong class="mediaCardTitle">Дивитися фільми онлайн українською в HD якості</strong>
     <div class="mediaCardContainer">
-      <div class="mediaCardEl">
+      <div v-if="filteredMovies.length >= 1" class="mediaCardEl">
         <ul class="mediaCardUl">
           <li v-for="movie in filteredMovies" :key="movie.id" class="mediaCardElLi">
             <router-link :to="'/film/' + movie.id"> 
@@ -39,6 +39,11 @@
           </li>
         </ul>
       </div>
+      <!-- to mediaCardEl -->
+      <div v-else className="notFound">
+        <p>Фільм не знайдено... </p>
+        <p>Спробуйте замінити запит або знайдіть щось інше </p>
+      </div>
     </div>
   </div>
 </template>
@@ -51,7 +56,7 @@ const movies = ref([]);
 
 const filteredMovies = computed(() => {
   return movies.value.filter(movie =>
-    movie.title.toLowerCase().includes(query.value.toLowerCase())
+    movie.title.toLowerCase().includes(query.value.toLowerCase()) 
   );
 });
 
@@ -150,6 +155,16 @@ onMounted(() => {
     align-items: center;
     margin-top: 20px;
 }
+.notFound{
+  font-size: 24px;
+  text-align: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+@media (max-width: 400px){
+  .notFound{
+    font-size: 20px;
+  }
+}
 .mediaCardImageContainer{
     position: relative;
 }
@@ -182,6 +197,11 @@ onMounted(() => {
 @media (max-width: 800px){
     .mediaCardTitle{
         font-size: 24px;
+    }
+}
+@media (max-width: 400px){
+    .mediaCardTitle{
+        font-size: 20px;
     }
 }
 
